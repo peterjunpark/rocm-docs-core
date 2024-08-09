@@ -2,6 +2,17 @@ name: Docs Linting
 
 on:
   workflow_call:
+    inputs:
+      run-md-lint:
+        description: 'Whether to run the Markdown linting job'
+        required: false
+        default: true
+        type: boolean
+      run-spelling:
+        description: 'Whether to run the Spelling check job'
+        required: false
+        default: true
+        type: boolean
   push:
     branches: [develop, main]
   pull_request:
@@ -15,6 +26,7 @@ jobs:
   lint-md:
     name: "Markdown"
     runs-on: ubuntu-latest
+    if: ${{ inputs.run-md-lint }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -30,6 +42,7 @@ jobs:
   spelling:
     name: "Spelling"
     runs-on: ubuntu-latest
+    if: ${{ inputs.run-spelling }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
