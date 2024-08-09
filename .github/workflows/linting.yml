@@ -8,11 +8,14 @@ on:
         required: false
         default: true
         type: boolean
-      run-spelling:
+      run-spellcheck:
         description: 'Whether to run the Spelling check job'
         required: false
         default: true
         type: boolean
+      spellcheck-paths:
+        required: false
+        type: string
   push:
     branches: [develop, main]
   pull_request:
@@ -54,6 +57,9 @@ jobs:
           curl --silent --show-error --fail --location https://raw.github.com/ROCm/rocm-docs-core/develop/.wordlist.txt >> .wordlist.txt
       - name: Run spellcheck
         uses: rojopolis/spellcheck-github-actions@0.40.0
+        with:
+          source_files: ${{ inputs.spellcheck-paths }}
+          task_name: reST
       - name: On fail
         if: failure()
         run: |

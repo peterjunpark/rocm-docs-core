@@ -40,6 +40,7 @@ matrix:
   dictionary:
     wordlists:
     - .wordlist.txt
+    - docs/.wordlist.txt
   pipeline:
   - pyspelling.filters.context:
       context_visible_first: true
@@ -95,6 +96,7 @@ matrix:
   dictionary:
     wordlists:
     - .wordlist.txt
+    - docs/.wordlist.txt
   pipeline:
   - pyspelling.filters.text:
   - pyspelling.filters.context:
