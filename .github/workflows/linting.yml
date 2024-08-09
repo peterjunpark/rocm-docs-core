@@ -8,8 +8,8 @@ on:
         required: false
         default: true
         type: boolean
-      run-spellcheck:
-        description: 'Whether to run the spellcheck job'
+      run-spelling:
+        description: 'Whether to run the Spelling check job'
         required: false
         default: true
         type: boolean
@@ -53,7 +53,7 @@ jobs:
           curl --silent --show-error --fail --location https://raw.github.com/ROCm/rocm-docs-core/develop/.spellcheck.yaml -O
           curl --silent --show-error --fail --location https://raw.github.com/ROCm/rocm-docs-core/develop/.wordlist.txt >> .wordlist.txt
       - name: Run spellcheck
-        uses: rojopolis/spellcheck-github-actions@0.40.0
+        uses: rojopolis/spellcheck-github-actions@0.30.0
       - name: On fail
         if: failure()
         run: |
