@@ -13,11 +13,6 @@ on:
         required: false
         default: true
         type: boolean
-      spellcheck-globs:
-        description: 'File patterns to spellcheck'
-        required: false
-        default: '*'
-        type: string
   push:
     branches: [develop, main]
   pull_request:
@@ -58,9 +53,7 @@ jobs:
           curl --silent --show-error --fail --location https://raw.github.com/ROCm/rocm-docs-core/develop/.spellcheck.yaml -O
           curl --silent --show-error --fail --location https://raw.github.com/ROCm/rocm-docs-core/develop/.wordlist.txt >> .wordlist.txt
       - name: Run spellcheck
-        uses: rojopolis/spellcheck-github-actions@0.30.0
-        with:
-          source_files: ${{ inputs.spellcheck-globs }}
+        uses: rojopolis/spellcheck-github-actions@0.40.0
       - name: On fail
         if: failure()
         run: |
