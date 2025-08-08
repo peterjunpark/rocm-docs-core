@@ -6,6 +6,8 @@
 Linking in RST
 ==============
 
+:doc:`HIP docs <hip:index>`
+
 reStructuredText (RST)
 ----------------------
 
